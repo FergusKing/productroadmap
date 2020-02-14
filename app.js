@@ -7,6 +7,7 @@ const helmet = require('helmet')
 
 //DEV REQUIRES
 const logger = require('morgan')
+require('dotenv').config()
 
 //CONFIG
 var app = express()
