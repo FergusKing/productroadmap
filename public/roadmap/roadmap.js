@@ -120,7 +120,7 @@ window.rm = {
             rm.createChangeLog()
         }
     }
-    reqConfig.open('GET', 'https://spreadsheets.google.com/feeds/list/' + rm.sheet + '/1/public/basic?alt=json', true)
+    reqConfig.open('GET', '/rm-data/' + rm.sheet + '/1', true)
     reqConfig.send()
   },
   getTeams: function(team) {
@@ -144,7 +144,7 @@ window.rm = {
             }
         }
     }
-    req.open('GET', 'https://spreadsheets.google.com/feeds/list/' + rm.sheet + '/' + team + '/public/basic?alt=json', true)
+    req.open('GET', '/rm-data/' + rm.sheet + '/' + team , true)
     req.send()
   },
   startRoadmapBuild: function(){
@@ -309,7 +309,7 @@ window.rm = {
             window.renderable = true;
         }
     }
-    reqChangeLog.open('GET', 'https://spreadsheets.google.com/feeds/list/' + rm.sheet + '/' + (rm.teamInt + 2) + '/public/basic?alt=json', true)
+    reqChangeLog.open('GET', '/rm-data/' + rm.sheet + '/' + (rm.teamInt + 2), true)
     reqChangeLog.send()
   },
   changeLogFormat: function(txtStr){

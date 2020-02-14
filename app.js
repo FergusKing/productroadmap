@@ -4,7 +4,6 @@ const bodyParser = require('body-parser')
 const mime = require('mime-types')
 const compression = require('compression')
 const helmet = require('helmet')
-const proxy = require('express-http-proxy');
 
 //DEV REQUIRES
 const logger = require('morgan')
@@ -32,22 +31,14 @@ app.use(express.static(path.join(__dirname + '/public'), {
     }
 }))
 
-// Proxy images from Prismics cdn so that they have our domain - this improves search indexation
-app.use('/rm-data/:sheetId/:teamId', proxy('https://spreadsheets.google.com', {
-  proxyReqPathResolver: function(req) {
-    return new Promise(function (resolve, reject) {
-      console.log('/feeds/list/' + req.params.sheetId + '/' + req.params.teamId + '/public/basic')
-      resolve('/feeds/list/' + req.params.sheetId + '/' + req.params.teamId + '/public/basic?alt=json');
-    });
-  }
-}));
-
 //ROUTES
 var blueprint = require('./routes/blueprint')
+var rmData = require('./routes/rm-data')
 //var blueprintImg = require('./routes/blueprint-image')
 var index = require('./routes/index')
 
 
+app.use('/rm-data', rmData)
 app.use('/blueprint', blueprint)
 //app.use('/blueprint-image', blueprintImg)
 app.use('/$', index)
