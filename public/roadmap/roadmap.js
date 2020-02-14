@@ -14,6 +14,7 @@ window.h = {
   }
 }
 window.rm = {
+  sheet: rmConfig.sheetId,
   teamInt: undefined,
   teamsData: new Array(),
   contObj: undefined,
@@ -119,7 +120,7 @@ window.rm = {
             rm.createChangeLog()
         }
     }
-    reqConfig.open("GET", "https://spreadsheets.google.com/feeds/list/1gcoHVwmpBzeO5wbzVXD2J9BENpKYhfatWcJNI5nHnX8/1/public/basic?alt=json", true)
+    reqConfig.open('GET', 'https://spreadsheets.google.com/feeds/list/' + rm.sheet + '/1/public/basic?alt=json', true)
     reqConfig.send()
   },
   getTeams: function(team) {
@@ -143,7 +144,7 @@ window.rm = {
             }
         }
     }
-    req.open('GET', 'https://spreadsheets.google.com/feeds/list/1gcoHVwmpBzeO5wbzVXD2J9BENpKYhfatWcJNI5nHnX8/' + team + '/public/basic?alt=json', true)
+    req.open('GET', 'https://spreadsheets.google.com/feeds/list/' + rm.sheet + '/' + team + '/public/basic?alt=json', true)
     req.send()
   },
   startRoadmapBuild: function(){
@@ -308,7 +309,7 @@ window.rm = {
             window.renderable = true;
         }
     }
-    reqChangeLog.open("GET", "https://spreadsheets.google.com/feeds/list/1gcoHVwmpBzeO5wbzVXD2J9BENpKYhfatWcJNI5nHnX8/" + (rm.teamInt + 2) + "/public/basic?alt=json", true)
+    reqChangeLog.open('GET', 'https://spreadsheets.google.com/feeds/list/' + rm.sheet + '/' + (rm.teamInt + 2) + '/public/basic?alt=json', true)
     reqChangeLog.send()
   },
   changeLogFormat: function(txtStr){
