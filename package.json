@@ -1,0 +1,28 @@
+{
+  "name": "product_roadmap",
+  "version": "0.0.1",
+  "description": "A way of visualising roadmap data from a google doc",
+  "main": "app.js",
+  "scripts": {
+    "start": "npm run production",
+    "dev": "nodemon ./bin/www",
+    "production": "node ./bin/www",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-prebuild": "npm install"
+  },
+  "author": "Fergus King",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv": "^7.0.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "compression": "^1.7.4",
+    "express": "^4.16.4",
+    "helmet": "^3.16.0",
+    "morgan": "^1.9.1",
+    "puppeteer": "^2.1.1",
+    "showdown": "^1.9.0",
+    "twig": "^1.13.2"
+  }
+}
