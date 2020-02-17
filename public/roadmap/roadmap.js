@@ -239,16 +239,21 @@ window.rm = {
         } else {
             item.weekend = Number(item.weekend) + 1
         }
-
+        if(item.weekend === 3 && item.title.length > 30){
+          console.log(item.title)
+          console.log(item.title.length)
+        }
         //check if it is a single box
         if(item.weekend <= 2){
             extraClass = ' rm__item--thin'
             rm__item.innerText = ''
+        }else if (item.weekend === 3 && item.title.length > 30){
+          rm__item.innerText = ''
         }
         rm__item.className = 'rm__item' + extraClass
         rm__item.setAttribute('style', 'grid-column-start: ' + item.weekstart + '; grid-column-end: ' + item.weekend + ';')
         div_cont.appendChild(rm__item)
-        if(item.weekend <= 2){
+        if(item.weekend <= 2 || (item.weekend === 3 && item.title.length > 30)){
             var rm__label = document.createElement('div')
             rm__label.innerText = item.title
             rm__label.className = 'rm__item rm__item--label'
@@ -301,7 +306,6 @@ window.rm = {
             var htmlStr = '';
             data.feed.entry.forEach ((entry, index) => {
                 var entryContRA = rm.convertString(entry.content.$t)
-                console.log(entryContRA.blurb)
                 htmlStr += '<tr><td class="tbl__logo">' + rm.teamsData[index+2].logo + '</td><td class="tbl__heading">' + entry.title.$t + '</td><td class="tbl__content">' + rm.changeLogFormat(entryContRA.blurb) + '</td></tr>'
             })
             document.querySelector('#change-log').innerHTML += htmlStr
