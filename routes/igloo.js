@@ -5,8 +5,12 @@ router.use(function(req, res, next){
     next()
 })
 
-router.get('*', function(req, res, next){
-    res.send(404,'I havent built this yet')
+router.get('', function(req, res, next){
+    res.render('igloo',{
+        urlLink: ''
+    })
 })
+
+
 
 module.exports = router

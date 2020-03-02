@@ -35,13 +35,19 @@ app.use(express.static(path.join(__dirname + '/public'), {
 //ROUTES
 var blueprint = require('./routes/blueprint')
 var rmData = require('./routes/rm-data')
+var createRoadmap = require('./routes/create_roadmap')
 //var blueprintImg = require('./routes/blueprint-image')
+var dashboard = require('./routes/dashboard')
+var igloo = require('./routes/igloo')
 var index = require('./routes/index')
 
 
 app.use('/rm-data', rmData)
 app.use('/blueprint', blueprint)
+app.use('/create-roadmap', createRoadmap)
 //app.use('/blueprint-image', blueprintImg)
+app.use('/dashboard', dashboard)
+app.use('/igloo', igloo)
 app.use('/$', index)
 
 //CATCH 404
