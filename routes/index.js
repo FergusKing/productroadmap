@@ -6,7 +6,7 @@ router.use(function(req, res, next){
 })
 
 router.get('*', function(req, res, next){
-    res.send(404,'I havent built this yet')
+    res.status(404).send('I havent built this yet')
 })
 
 module.exports = router
