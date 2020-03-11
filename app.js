@@ -34,6 +34,7 @@ app.use(express.static(path.join(__dirname + '/public'), {
 
 //ROUTES
 var blueprint = require('./routes/blueprint')
+var blueprintIgloo = require('./routes/blueprint-igloo')
 var rmData = require('./routes/rm-data')
 var createRoadmap = require('./routes/create_roadmap')
 //var blueprintImg = require('./routes/blueprint-image')
@@ -44,6 +45,7 @@ var index = require('./routes/index')
 
 app.use('/rm-data', rmData)
 app.use('/blueprint', blueprint)
+app.use('/blueprint-igloo', blueprintIgloo)
 app.use('/create-roadmap', createRoadmap)
 //app.use('/blueprint-image', blueprintImg)
 app.use('/dashboard', dashboard)
